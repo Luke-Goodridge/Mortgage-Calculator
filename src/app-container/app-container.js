@@ -1,11 +1,31 @@
 import React from 'react';
 
-const app_container = (props) => {
+const app_container = ({interestAmount,totalMortgageCost,inputHousePrice,inputDepositPrice}) => {
     return (
         <div className="App">
             <h1>Mortgage Calculator</h1>
-            <button>Monthly payments calculator</button>
-            <button>Max mortgage calculator</button>
+            <div>
+                <h2>Interest rate</h2>
+                <p>{interestAmount+"%"}</p>
+            </div>
+            <div>
+                <h2>Deposit</h2>
+                <input 
+                name = "deposit"
+                onChange={inputDepositPrice}
+                placeholder="Please enter a deposit value"
+                ></input>
+            </div>
+            <div>
+                <h2>House price</h2>
+                <input
+                name = "housePrice"
+                onChange={inputHousePrice}
+                placeholder="Please enter a house price"
+                ></input>
+            </div>
+            <p>Total amount payable: £{totalMortgageCost}</p>
+            
         </div>
     );
 }
