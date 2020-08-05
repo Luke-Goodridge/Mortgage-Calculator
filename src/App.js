@@ -4,10 +4,12 @@ import Container from "./app-container/app-container.js";
 import Currency from "./Utilities/Utilities";
 
 class App extends Component {
+  //sets the inital state of the app
   state = {
     interestAmount: 2.5,
     deposit: 0,
     housePrice: 0,
+    //this mortgage length is yet to be used
     mortgageLength: 0,
     total: 0,
   };
@@ -27,14 +29,14 @@ class App extends Component {
   };  
 
   calculateTotalPrice = (deposit, housePrice, interestRate) => {
+    //variables for calculations
     let total = 0;
-
+    let mortgage = housePrice - deposit;
     //check to make sure house value has an appropriate value
     if(housePrice <= 0) {
       alert("No house value entered");
       return;
     }
-    let mortgage = housePrice - deposit;
     //check to see if the mortgage isnt already paid
     if(mortgage <= 0) {
       total = "You've paid it all with the deposit!";
@@ -57,11 +59,13 @@ class App extends Component {
     return (
       <div className="App">
         <Container 
+        //assign the props to the appropriate function or property
         interestAmount={this.state.interestAmount}
         inputPriceHandler={this.inputPriceHandler}
         totalMortgageCost={this.state.total}
         />
         <button onClick={
+          //runs the calc function with the current state properties
           this.calculateTotalPrice.bind(this,this.state.deposit,this.state.housePrice,this.state.interestAmount)}>
           Calculate
         </button>
