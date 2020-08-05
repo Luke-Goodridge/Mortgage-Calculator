@@ -9,7 +9,7 @@ const app_container = ({interestAmount,totalMortgageCost,inputPriceHandler}) => 
                 <p>{interestAmount+"%"}</p>
             </div>
             <div>
-                <h2>Deposit</h2>
+                <h2>Deposit (£)</h2>
                 <input 
                 name = "deposit"
                 onChange={inputPriceHandler}
@@ -17,7 +17,7 @@ const app_container = ({interestAmount,totalMortgageCost,inputPriceHandler}) => 
                 ></input>
             </div>
             <div>
-                <h2>House price</h2>
+                <h2>House price (£)</h2>
                 <input
                 name = "housePrice"
                 onChange={inputPriceHandler}

@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import './App.css';
 import Container from "./app-container/app-container.js";
+import Currency from "./Utilities/Utilities";
 
 class App extends Component {
   state = {
@@ -45,7 +46,7 @@ class App extends Component {
       total *= interestRate;
       //add the interest back to the mortage amount
       total += mortgage;
-      total = "£" + total.toString();
+      total = Currency.format(total);
     }
     //set the state to the new calc'd value
     this.setState({
