@@ -1,6 +1,6 @@
 import React from 'react';
 
-const app_container = ({interestAmount,totalMortgageCost,inputHousePrice,inputDepositPrice}) => {
+const app_container = ({interestAmount,totalMortgageCost,inputPriceHandler}) => {
     return (
         <div className="App">
             <h1>Mortgage Calculator</h1>
@@ -12,7 +12,7 @@ const app_container = ({interestAmount,totalMortgageCost,inputHousePrice,inputDe
                 <h2>Deposit</h2>
                 <input 
                 name = "deposit"
-                onChange={inputDepositPrice}
+                onChange={inputPriceHandler}
                 placeholder="Please enter a deposit value"
                 ></input>
             </div>
@@ -20,11 +20,11 @@ const app_container = ({interestAmount,totalMortgageCost,inputHousePrice,inputDe
                 <h2>House price</h2>
                 <input
                 name = "housePrice"
-                onChange={inputHousePrice}
+                onChange={inputPriceHandler}
                 placeholder="Please enter a house price"
                 ></input>
             </div>
-            <p>Total amount payable: £{totalMortgageCost}</p>
+            <p>Total amount payable: {totalMortgageCost}</p>
             
         </div>
     );

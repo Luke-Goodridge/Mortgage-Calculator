@@ -27,14 +27,17 @@ class App extends Component {
 
   calculateTotalPrice = (deposit, housePrice, interestRate) => {
     let total = 0;
-    let mortgage = housePrice - deposit;
+
     //check to make sure house value has an appropriate value
     if(housePrice <= 0) {
       alert("No house value entered");
       return;
     }
-    //check to see if the deposit is appropriate
-    if(deposit >= mortgage) total = "You've paid it all with the deposit!";
+    let mortgage = housePrice - deposit;
+    //check to see if the mortgage isnt already paid
+    if(mortgage <= 0) {
+      total = "You've paid it all with the deposit!";
+    }
     else {
       //get house price and turn it into 1%
       total = (mortgage) / 100;
@@ -42,9 +45,9 @@ class App extends Component {
       total *= interestRate;
       //add the interest back to the mortage amount
       total += mortgage;
-      //set the total state to the newly calc'd value.
+      total = "£" + total.toString();
     }
-    //set the state
+    //set the state to the new calc'd value
     this.setState({
       total: total,
     })
@@ -54,8 +57,7 @@ class App extends Component {
       <div className="App">
         <Container 
         interestAmount={this.state.interestAmount}
-        inputDepositPrice={this.inputPriceHandler.bind(this)}
-        inputHousePrice={this.inputPriceHandler.bind(this)}
+        inputPriceHandler={this.inputPriceHandler}
         totalMortgageCost={this.state.total}
         />
         <button onClick={
