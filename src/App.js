@@ -2,11 +2,13 @@ import React, { Component } from 'react';
 import './App.css';
 import Container from "./app-container/app-container.js";
 import Currency from "./Utilities/Utilities";
+import Dropdown from "./dropdown/dropdown";
 
 class App extends Component {
   //sets the inital state of the app
   state = {
     interestAmount: 2.5,
+    interestArray: [0.0,1.0,2.0,2.5,3,3.5],
     deposit: 0,
     housePrice: 0,
     //this mortgage length is yet to be used
@@ -55,9 +57,21 @@ class App extends Component {
       total: total,
     })
   };
+
+  //handles the on change for the select event
+  dropdownHandler = (event) => {
+    this.setState({
+      interestAmount: event.target.value,
+    })
+  }
   render(){
     return (
       <div className="App">
+        <Dropdown 
+        currentInterest={this.state.interestAmount}
+        dropdownHandler={this.dropdownHandler}
+        interestArray={this.state.interestArray}
+        />
         <Container 
         //assign the props to the appropriate function or property
         interestAmount={this.state.interestAmount}
