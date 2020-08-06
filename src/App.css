@@ -24,8 +24,10 @@
   color: white;
 }
 
-.test {
-  background-color: #282c34;
+select {
+  width: 150px;
+  text-align: center;
+  text-align-last: center;
 }
 
 .App-link {

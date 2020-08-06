@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import './App.css';
 import Container from "./app-container/app-container.js";
 import Currency from "./Utilities/Utilities";
-import Dropdown from "./dropdown/dropdown";
 
 class App extends Component {
   //sets the inital state of the app
@@ -67,16 +66,14 @@ class App extends Component {
   render(){
     return (
       <div className="App">
-        <Dropdown 
+        <Container 
+        //props for the main app-container.js
+        inputPriceHandler={this.inputPriceHandler}
+        totalMortgageCost={this.state.total}
+        //Props for the dropdown.js
         currentInterest={this.state.interestAmount}
         dropdownHandler={this.dropdownHandler}
         interestArray={this.state.interestArray}
-        />
-        <Container 
-        //assign the props to the appropriate function or property
-        interestAmount={this.state.interestAmount}
-        inputPriceHandler={this.inputPriceHandler}
-        totalMortgageCost={this.state.total}
         />
         <button onClick={
           //runs the calc function with the current state properties

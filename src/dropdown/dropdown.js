@@ -1,10 +1,11 @@
 import React from 'react';
+
 const dropdown = ({currentInterest,dropdownHandler,interestArray}) => {
-    console.log("current interest is:" ,currentInterest);
+    let id = 0;
     return(
         <select value={currentInterest} onChange={dropdownHandler}>
             {interestArray.map((option)=>
-                <option value={option}>{option}%</option>
+                <option key={id++} value={option}>{option}%</option>
             )}
         </select>
     );

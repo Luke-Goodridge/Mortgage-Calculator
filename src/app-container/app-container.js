@@ -1,13 +1,17 @@
 import React from 'react';
+import Dropdown from "../dropdown/dropdown";
 
-const app_container = ({interestAmount,totalMortgageCost,inputPriceHandler}) => {
+const app_container = ({totalMortgageCost,inputPriceHandler,interestArray,dropdownHandler,currentInterest}) => {
     return (
         <div className="App">
             <h1>Mortgage Calculator</h1>
             <div>
                 <h2>Interest rate</h2>
-                {/* for now the interest rate is fixed, will change to a drop down soon */}
-                <p>{interestAmount+"%"}</p>
+                <Dropdown 
+                    currentInterest={currentInterest}
+                    dropdownHandler={dropdownHandler}
+                    interestArray={interestArray}
+                />
             </div>
             <div>
                 <h2>Deposit (£)</h2>
