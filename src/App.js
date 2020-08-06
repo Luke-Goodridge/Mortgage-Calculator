@@ -11,7 +11,7 @@ class App extends Component {
     deposit: 0,
     housePrice: 0,
     //this mortgage length is yet to be used
-    mortgageLength: 0,
+    mortgageLength: 25,
     total: 0,
   };
 
