@@ -30,9 +30,23 @@ class App extends Component {
     })
   };
 
+  //handles the on change for the select event
+  dropdownHandler = (event) => {
+    this.setupMortgageCalculation(
+      this.state.deposit,
+      this.state.housePrice,
+      this.state.interestAmount,
+      this.state.termLength
+      );
+    this.setState({
+      interestAmount: event.target.value,
+    })
+  }
+
   calculateMonthlyPayment = (mortgageAmount, interest, term) =>
   {
     interest /= 1200;
+    //turn term into months
     term *= 12;
     let monthlyPayment = mortgageAmount*(interest * Math.pow((1 + interest), term));
     monthlyPayment /= (Math.pow((1 + interest), term) - 1);
@@ -63,19 +77,7 @@ class App extends Component {
       monthlyPayment: monthlyPayment,
     })
   };
-
-  //handles the on change for the select event
-  dropdownHandler = (event) => {
-    this.setupMortgageCalculation(
-      this.state.deposit,
-      this.state.housePrice,
-      this.state.interestAmount,
-      this.state.termLength
-      );
-    this.setState({
-      interestAmount: event.target.value,
-    })
-  }
+  
   render(){
     return (
       <div className="App">
