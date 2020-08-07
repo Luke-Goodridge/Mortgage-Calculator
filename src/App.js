@@ -32,12 +32,6 @@ class App extends Component {
 
   //handles the on change for the select event
   dropdownHandler = (event) => {
-    this.setupMortgageCalculation(
-      this.state.deposit,
-      this.state.housePrice,
-      this.state.interestAmount,
-      this.state.termLength
-      );
     this.setState({
       interestAmount: event.target.value,
     })
@@ -46,10 +40,16 @@ class App extends Component {
   calculateMonthlyPayment = (mortgageAmount, interest, term) =>
   {
     interest /= 1200;
-    //turn term into months
     term *= 12;
-    let monthlyPayment = mortgageAmount*(interest * Math.pow((1 + interest), term));
-    monthlyPayment /= (Math.pow((1 + interest), term) - 1);
+    let monthlyPayment = 0;
+    //do an extra check if interest is 0 or lower, we dont need to do the calculation.
+    if(interest <= 0){
+      monthlyPayment = mortgageAmount / term;
+    }
+    else {
+      monthlyPayment = mortgageAmount*(interest * Math.pow((1 + interest), term));
+      monthlyPayment /= (Math.pow((1 + interest), term) - 1);
+    }
     return monthlyPayment;
   }
 
