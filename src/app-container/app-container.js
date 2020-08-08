@@ -1,17 +1,18 @@
 import React from 'react';
-import Dropdown from "../dropdown/dropdown";
+
 
 const app_container = ({totalMortgageCost,inputPriceHandler,interestArray,dropdownHandler,currentInterest}) => {
+    let index = 0;
     return (
         <div className="App">
             <h1>Mortgage Calculator</h1>
             <div>
                 <h2>Interest rate</h2>
-                <Dropdown 
-                    currentInterest={currentInterest}
-                    dropdownHandler={dropdownHandler}
-                    interestArray={interestArray}
-                />
+                <select value={currentInterest} onChange={dropdownHandler}>
+                    {interestArray.map((option)=>
+                        <option key={index++} value={option}>{option}%</option>
+                    )}
+                </select>
             </div>
             <div>
                 <h2>Deposit (£)</h2>
