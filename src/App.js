@@ -11,49 +11,22 @@ class App extends Component {
     deposit: 0,
     housePrice: 0,
     //this mortgage length is yet to be used
-    mortgageLength: 25,
-    total: 0,
+    termLength: 25,
+    monthlyPayment: 0,
   };
 
   inputPriceHandler = (e) => {
     const maxLength = 8;
     //checks for the value, if its a number
-    //also checks the length to make sure its appropriate
     if(isNaN(e.target.value)) e.target.value = "";
+    //also checks the length to make sure its appropriate
     else if(e.target.value.length > maxLength) {
+      //keeps the inout to a length of maxLength
       e.target.value = e.target.value.slice(0,maxLength);
     }
-    //CHANGE THIS
+    //set the state to the new value entered
     this.setState({
       [e.target.name]: e.target.value,
-    })
-  };  
-
-  calculateTotalPrice = (deposit, housePrice, interestRate) => {
-    //variables for calculations
-    let total = 0;
-    let mortgage = housePrice - deposit;
-    //check to make sure house value has an appropriate value
-    if(housePrice <= 0) {
-      alert("No house value entered");
-      return;
-    }
-    //check to see if the mortgage isnt already paid
-    if(mortgage <= 0) {
-      total = "You've paid it all with the deposit!";
-    }
-    else {
-      //get house price and turn it into 1%
-      total = (mortgage) / 100;
-      //find interest rate of the total
-      total *= interestRate;
-      //add the interest back to the mortage amount
-      total += mortgage;
-      total = Currency.format(total);
-    }
-    //set the state to the new calc'd value
-    this.setState({
-      total: total,
     })
   };
 
@@ -63,13 +36,55 @@ class App extends Component {
       interestAmount: event.target.value,
     })
   }
+
+  calculateMonthlyPayment = (mortgageAmount, interest, term) =>
+  {
+    interest /= 1200;
+    term *= 12;
+    let monthlyPayment = 0;
+    //do an extra check if interest is 0 or lower, we dont need to do the calculation.
+    if(interest <= 0){
+      monthlyPayment = mortgageAmount / term;
+    }
+    else {
+      monthlyPayment = mortgageAmount*(interest * Math.pow((1 + interest), term));
+      monthlyPayment /= (Math.pow((1 + interest), term) - 1);
+    }
+    return monthlyPayment;
+  }
+
+  setupMortgageCalculation = (deposit, housePrice, interestRate, termLength) => {
+    //variables for calculations
+    let monthlyPayment = 0;
+    let mortgage = housePrice - deposit;
+    //check to make sure house value has an appropriate value
+    if(housePrice <= 0) {
+      alert("No house value entered");
+      return;
+    }
+    //check to see if the mortgage isnt already paid
+    if(mortgage <= 0) {
+      monthlyPayment = "You've paid it all with the deposit!";
+    }
+    else {
+      monthlyPayment = this.calculateMonthlyPayment(mortgage,interestRate,termLength);
+      //format the monthlyPayment into currency
+      monthlyPayment = Currency.format(monthlyPayment);
+
+    }
+    //set the state to the new calc'd value
+    this.setState({
+      monthlyPayment: monthlyPayment,
+    })
+  };
+  
   render(){
     return (
       <div className="App">
         <Container 
         //props for the main app-container.js
         inputPriceHandler={this.inputPriceHandler}
-        totalMortgageCost={this.state.total}
+        monthlyPayment={this.state.monthlyPayment}
         //Props for the dropdown.js
         currentInterest={this.state.interestAmount}
         dropdownHandler={this.dropdownHandler}
@@ -77,7 +92,11 @@ class App extends Component {
         />
         <button onClick={
           //runs the calc function with the current state properties
-          this.calculateTotalPrice.bind(this,this.state.deposit,this.state.housePrice,this.state.interestAmount)}>
+          this.setupMortgageCalculation.bind(this,
+          this.state.deposit,
+          this.state.housePrice,
+          this.state.interestAmount,
+          this.state.termLength)}>
           Calculate
         </button>
       </div>

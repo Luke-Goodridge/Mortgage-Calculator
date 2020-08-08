@@ -1,7 +1,6 @@
 import React from 'react';
 
-
-const app_container = ({totalMortgageCost,inputPriceHandler,interestArray,dropdownHandler,currentInterest}) => {
+const app_container = ({monthlyPayment,inputPriceHandler,interestArray,dropdownHandler,currentInterest}) => {
     let index = 0;
     return (
         <div className="App">
@@ -33,7 +32,7 @@ const app_container = ({totalMortgageCost,inputPriceHandler,interestArray,dropdo
                 ></input>
             </div>
             {/* displays the total to the user */}
-            <p>Total amount payable: {totalMortgageCost}</p>
+            <h2>Monthly payment amount: {monthlyPayment}</h2>
             
         </div>
     );
