@@ -1,17 +1,17 @@
 import React, { Component } from 'react';
 import './App.css';
-import Container from "./app-container/app-container.js";
+import MortgageCalc from "./mortgageCalculator/mortgageCalculator.js";
 import Currency from "./Utilities/Utilities";
 
 class App extends Component {
   //sets the inital state of the app
   state = {
     interestAmount: 2.5,
-    interestArray: [0.0,1.0,2.0,2.5,3,3.5],
+    interestArray: [0.5,1.0,2.0,2.5,3,3.5],
     deposit: 0,
     housePrice: 0,
-    //this mortgage length is yet to be used
     termLength: 25,
+    termLengthArray: [10,15,20,25,30,35,40],
     monthlyPayment: 0,
   };
 
@@ -31,12 +31,16 @@ class App extends Component {
   };
 
   //handles the on change for the select event
-  dropdownHandler = (event) => {
+  interestDropdownHandler = (event) => {
     this.setState({
       interestAmount: event.target.value,
     })
+  }  
+  termDropdownHandler = (event) => {
+    this.setState({
+      termLength: event.target.value,
+    })
   }
-
   calculateMonthlyPayment = (mortgageAmount, interest, term) =>
   {
     interest /= 1200;
@@ -81,14 +85,18 @@ class App extends Component {
   render(){
     return (
       <div className="App">
-        <Container 
+        <MortgageCalc 
         //props for the main app-container.js
         inputPriceHandler={this.inputPriceHandler}
         monthlyPayment={this.state.monthlyPayment}
-        //Props for the dropdown.js
+        //Interest drop down
         currentInterest={this.state.interestAmount}
-        dropdownHandler={this.dropdownHandler}
+        interestDropdownHandler={this.interestDropdownHandler}
         interestArray={this.state.interestArray}
+        //Term drop down
+        termLength={this.state.termLength}
+        termDropdownHandler={this.termDropdownHandler}
+        termLengthArray={this.state.termLengthArray}
         />
         <button onClick={
           //runs the calc function with the current state properties

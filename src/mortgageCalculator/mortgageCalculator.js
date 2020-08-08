@@ -1,23 +1,24 @@
 import React from 'react';
+import Dropdown from '../dropdown/dropdown';
 
-const app_container = ({monthlyPayment,inputPriceHandler,interestArray,dropdownHandler,currentInterest}) => {
-    let index = 0;
+const mortgageCalculator = (props) => {
     return (
         <div className="App">
             <h1>Mortgage Calculator</h1>
             <div>
-                <h2>Interest rate</h2>
-                <select value={currentInterest} onChange={dropdownHandler}>
-                    {interestArray.map((option)=>
-                        <option key={index++} value={option}>{option}%</option>
-                    )}
-                </select>
+                <h2>Interest rate (%)</h2>
+                {/* Drop down component, this populates from the interestArray in the state */}
+                {Dropdown(props.currentInterest,props.interestArray,props.interestDropdownHandler)}
+            </div>
+            <div>
+                <h2>Term length (years)</h2>
+                {Dropdown(props.termLength,props.termLengthArray,props.termDropdownHandler)}
             </div>
             <div>
                 <h2>Deposit (£)</h2>
                 <input 
                 name = "deposit"
-                onChange={inputPriceHandler}
+                onChange={props.inputPriceHandler}
                 placeholder="Please enter a deposit value"
                 ></input>
             </div>
@@ -27,15 +28,16 @@ const app_container = ({monthlyPayment,inputPriceHandler,interestArray,dropdownH
                 //this 'name' field is used to link the...
                 //property name when used to change state
                 name = "housePrice"
-                onChange={inputPriceHandler}
+                onChange={props.inputPriceHandler}
                 placeholder="Please enter a house price"
                 ></input>
             </div>
             {/* displays the total to the user */}
-            <h2>Monthly payment amount: {monthlyPayment}</h2>
+            <h2>Monthly payment amount: {props.monthlyPayment}</h2>
             
         </div>
     );
+
 }
 
-export default app_container;
+export default mortgageCalculator;
