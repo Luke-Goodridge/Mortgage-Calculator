@@ -17,11 +17,11 @@ class App extends Component {
 
   inputPriceHandler = (e) => {
     const maxLength = 8;
-    //checks for the value, if its a number
+    //checks for the value, if its not a number, dont update the value.
     if(isNaN(e.target.value)) e.target.value = "";
     //also checks the length to make sure its appropriate
     else if(e.target.value.length > maxLength) {
-      //keeps the inout to a length of maxLength
+      //keeps the input to a length of maxLength
       e.target.value = e.target.value.slice(0,maxLength);
     }
     //set the state to the new value entered
