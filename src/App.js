@@ -84,7 +84,7 @@ class App extends Component {
   
   render(){
     return (
-      <div className="App">
+      <div className="MortgageCalc">
         <MortgageCalc 
         //props for the main app-container.js
         inputPriceHandler={this.inputPriceHandler}
@@ -97,16 +97,13 @@ class App extends Component {
         termLength={this.state.termLength}
         termDropdownHandler={this.termDropdownHandler}
         termLengthArray={this.state.termLengthArray}
-        />
-        <button onClick={
-          //runs the calc function with the current state properties
-          this.setupMortgageCalculation.bind(this,
+        //calculate button
+        calculateButton={this.setupMortgageCalculation.bind(this,
           this.state.deposit,
           this.state.housePrice,
           this.state.interestAmount,
-          this.state.termLength)}>
-          Calculate
-        </button>
+          this.state.termLength)}
+        />
       </div>
 
     );

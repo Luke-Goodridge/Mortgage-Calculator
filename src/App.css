@@ -1,44 +1,51 @@
-.App {
-  text-align: center;
+body {
+  background-color: bisque;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
-}
-
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+.MortgageCalc {
+  background-color: aquamarine;
+  border-radius: 10px;
   display: flex;
-  flex-direction: column;
-  align-items: center;
+  position: relative;;
   justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+  align-items: center;
+  flex-direction: column;
+  margin: 4vh auto;
+  text-align: center;
+  transition: .4s;
+  max-width: 600px;
+  height: 90vh;
+  padding: 10px;
 }
 
-select {
+.Dropdown {
   width: 150px;
   text-align: center;
   text-align-last: center;
 }
-
-.App-link {
-  color: #61dafb;
+#resetBtn {
+  position: absolute;
+  top: -20px;
+  right: -100px;
+  height: 50px;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
+h1 {
+  width: 100%;
+}
+h2 {
+  margin: 1rem;
+}
+
+
+
+/* Responsiveness */
+
+
+/* Small screens */
+@media only screen and (max-width: 800px) {
+  .MortgageCalc {
+    margin: 4vh;
+    font-size: small;
   }
 }

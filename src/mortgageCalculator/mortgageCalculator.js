@@ -3,7 +3,8 @@ import Dropdown from '../dropdown/dropdown';
 
 const mortgageCalculator = (props) => {
     return (
-        <div className="App">
+        <div className="MortgageCalc">
+            <button id="resetBtn">Reset button</button>
             <h1>Mortgage Calculator</h1>
             <div>
                 <h2>Interest rate (%)</h2>
@@ -33,7 +34,9 @@ const mortgageCalculator = (props) => {
                 ></input>
             </div>
             {/* displays the total to the user */}
-            <h2>Monthly payment amount: {props.monthlyPayment}</h2>
+            <h2>Monthly payment amount</h2>
+            <h2>{props.monthlyPayment}</h2>
+            <button onClick={props.calculateButton}>Calculate</button>
             
         </div>
     );
