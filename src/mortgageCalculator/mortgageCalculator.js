@@ -4,7 +4,7 @@ import Dropdown from '../dropdown/dropdown';
 const mortgageCalculator = (props) => {
     return (
         <div className="MortgageCalc">
-            <button id="resetBtn">Reset button</button>
+            <button id="resetBtn" onClick={props.resetBtnHandler}>Reset button</button>
             <h1>Mortgage Calculator</h1>
             <div>
                 <h2>Interest rate (%)</h2>

@@ -4,15 +4,21 @@ import MortgageCalc from "./mortgageCalculator/mortgageCalculator.js";
 import Currency from "./Utilities/Utilities";
 
 class App extends Component {
-  //sets the inital state of the app
-  state = {
+  interestArray = [0.5,1.0,2.0,2.5,3,3.5];
+  termLengthArray = [10,15,20,25,30,35,40];
+
+  initialState = {
     interestAmount: 2.5,
-    interestArray: [0.5,1.0,2.0,2.5,3,3.5],
     deposit: 0,
     housePrice: 0,
     termLength: 25,
-    termLengthArray: [10,15,20,25,30,35,40],
     monthlyPayment: 0,
+    inputDeposit: 0,
+    inputHousePrice: 0
+  }
+  //sets the inital state of the app
+  state = {
+    ...this.initialState
   };
 
   inputPriceHandler = (e) => {
@@ -41,6 +47,19 @@ class App extends Component {
       termLength: event.target.value,
     })
   }
+
+  resetCalculator = (event) => {
+    //reset the state to the initial state
+    this.setState({
+      ...this.initialState
+    })
+    //reset the inputs
+   let inputs = document.querySelectorAll("input");
+   inputs.forEach(input => {
+     input.value = null;
+   });
+  }
+
   calculateMonthlyPayment = (mortgageAmount, interest, term) =>
   {
     interest /= 1200;
@@ -92,17 +111,19 @@ class App extends Component {
         //Interest drop down
         currentInterest={this.state.interestAmount}
         interestDropdownHandler={this.interestDropdownHandler}
-        interestArray={this.state.interestArray}
+        interestArray={this.interestArray}
         //Term drop down
         termLength={this.state.termLength}
         termDropdownHandler={this.termDropdownHandler}
-        termLengthArray={this.state.termLengthArray}
+        termLengthArray={this.termLengthArray}
         //calculate button
         calculateButton={this.setupMortgageCalculation.bind(this,
           this.state.deposit,
           this.state.housePrice,
           this.state.interestAmount,
           this.state.termLength)}
+        //reset button
+        resetBtnHandler={this.resetCalculator}
         />
       </div>
 
