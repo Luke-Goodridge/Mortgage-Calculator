@@ -58,6 +58,8 @@ class App extends Component {
    inputs.forEach(input => {
      input.value = null;
    });
+   //hide the reset button
+   document.querySelector("#resetBtn").classList.add("hidden");
   }
 
   calculateMonthlyPayment = (mortgageAmount, interest, term) =>
@@ -93,8 +95,9 @@ class App extends Component {
       monthlyPayment = this.calculateMonthlyPayment(mortgage,interestRate,termLength);
       //format the monthlyPayment into currency
       monthlyPayment = Currency.format(monthlyPayment);
-
     }
+    //show the reset button
+    document.querySelector("#resetBtn").classList.remove("hidden");
     //set the state to the new calc'd value
     this.setState({
       monthlyPayment: monthlyPayment,
