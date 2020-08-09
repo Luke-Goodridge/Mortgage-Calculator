@@ -13,8 +13,6 @@ class App extends Component {
     housePrice: 0,
     termLength: 25,
     monthlyPayment: 0,
-    inputDeposit: 0,
-    inputHousePrice: 0
   }
   //sets the inital state of the app
   state = {
