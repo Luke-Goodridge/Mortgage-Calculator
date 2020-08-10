@@ -125,6 +125,8 @@ class App extends Component {
           this.state.termLength)}
         //reset button
         resetBtnHandler={this.resetCalculator}
+        //clear placeholder
+        clearPlaceholder={this.clearPlaceholder}
         />
       </div>
 

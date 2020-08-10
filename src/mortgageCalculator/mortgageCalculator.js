@@ -1,16 +1,19 @@
 import React from 'react';
 import Dropdown from '../dropdown/dropdown';
 
+const depositText = "Please enter a deposit value";
+const houseText = "Please enter a house value";
+
 const mortgageCalculator = (props) => {
     return (
-        <div className="MortgageCalc">
+        <div>
             <h1>Mortgage Calculator</h1>
-            <div>
+            <div className="dropdown-container">
                 <h2>Interest rate (%)</h2>
                 {/* Drop down component, this populates from the interestArray in the state */}
                 {Dropdown(props.currentInterest,props.interestArray,props.interestDropdownHandler)}
             </div>
-            <div>
+            <div className="dropdown-container">
                 <h2>Term length (years)</h2>
                 {Dropdown(props.termLength,props.termLengthArray,props.termDropdownHandler)}
             </div>
@@ -19,7 +22,9 @@ const mortgageCalculator = (props) => {
                 <input 
                 name = "deposit"
                 onChange={props.inputPriceHandler}
-                placeholder="Please enter a deposit value"
+                onFocus={clearPlaceholder}
+                onBlur={initPlaceholder}
+                placeholder={depositText}
                 ></input>
             </div>
             <div>
@@ -29,7 +34,9 @@ const mortgageCalculator = (props) => {
                 //property name when used to change state
                 name = "housePrice"
                 onChange={props.inputPriceHandler}
-                placeholder="Please enter a house price"
+                onFocus={clearPlaceholder}
+                onBlur={initPlaceholder}
+                placeholder={houseText}
                 ></input>
             </div>
             {/* displays the total to the user */}
@@ -43,5 +50,17 @@ const mortgageCalculator = (props) => {
     );
 
 }
+
+const clearPlaceholder = (event) => {
+    event.target.placeholder = "";
+  }
+  
+const initPlaceholder = (event) => {
+    if(event.target.name === "deposit"){
+        event.target.placeholder = depositText;
+    }
+    else event.target.placeholder = houseText;
+    
+  }
 
 export default mortgageCalculator;
