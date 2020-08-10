@@ -60,6 +60,10 @@ class App extends Component {
    document.querySelector("#resetBtn").classList.add("hidden");
   }
 
+  clearPlaceholder = (event) => {
+    event.target.placeholder = "";
+  }
+
   calculateMonthlyPayment = (mortgageAmount, interest, term) =>
   {
     interest /= 1200;

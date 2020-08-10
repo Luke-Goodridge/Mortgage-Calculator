@@ -60,7 +60,6 @@ const initPlaceholder = (event) => {
         event.target.placeholder = depositText;
     }
     else event.target.placeholder = houseText;
-    
   }
 
 export default mortgageCalculator;
