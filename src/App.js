@@ -97,6 +97,7 @@ class App extends Component {
       monthlyPayment = this.calculateMonthlyPayment(mortgage,interestRate,termLength);
       //format the monthlyPayment into currency
       monthlyPayment = Currency.format(monthlyPayment);
+      monthlyPayment += " per month";
     }
     //show the reset button
     document.querySelector("#resetBtn").classList.remove("hidden");
