@@ -132,6 +132,7 @@ class App extends Component {
         //clear placeholder
         clearPlaceholder={this.clearPlaceholder}
         />
+        <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;500&display=swap" rel="stylesheet"></link>
       </div>
 
     );

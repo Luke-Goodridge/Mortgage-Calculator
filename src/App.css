@@ -1,9 +1,14 @@
 body {
-  background-color: bisque;
+  background: #654ea3;  /* fallback for old browsers */
+  background: -webkit-linear-gradient(to right, #8A84E2, #654ea3);  /* Chrome 10-25, Safari 5.1-6 */
+  background: linear-gradient(to right, #8A84E2, #654ea3); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+  font-family: 'Montserrat', sans-serif;
 }
 
 .MortgageCalc {
-  background-color: aquamarine;
+  background-color: #79BEEE;
+  color: white;
+  text-shadow: 2px 2px black;;
   border-radius: 10px;
   display: flex;
   position: relative;;
@@ -14,14 +19,13 @@ body {
   transition: .4s;
   max-width: 600px;
   height: 90vh;
+  min-height: 840px;
   padding: 0;
+  -webkit-box-shadow: -1px 4px 22px -5px rgba(0,0,0,0.75);
+  -moz-box-shadow: -1px 4px 22px -5px rgba(0,0,0,0.75);
+  box-shadow: -1px 4px 22px -5px rgba(0,0,0,0.75);
 }
 
-.Dropdown {
-  width: 150px;
-  text-align: center;
-  text-align-last: center;
-}
 #resetBtn, #calcBtn {
   transition: .3s;
   margin: 5px;
@@ -29,10 +33,12 @@ body {
   height: 50px;
   width: 100px;
   cursor: pointer;
+  font-family: 'Montserrat', sans-serif;
+  background-color: #B7D3F2;
 }
 
 #resetBtn:hover, #calcBtn:hover {
-  background-color: brown;
+  background-color: #84AFE6;
 }
 .hidden {
   opacity: 0;
@@ -41,16 +47,28 @@ body {
 
 h1 {
   width: 100%;
+  margin: 15% 0;
 }
 h2 {
   margin: 1rem;
 }
 .Dropdown, input {
   text-align: center;
+  text-align-last: center;
   width: 100%;
   height: 50px;
+  margin: 0;
+  padding: 0;
+  border: none;
+  font-size: 1rem;
+  font-family: 'Montserrat', sans-serif;
+  background-color: #B7D3F2;
 }
 
+.Dropdown:focus, input:focus {
+  background-color: #84AFE6;
+  outline: 0px;
+}
 
 
 
