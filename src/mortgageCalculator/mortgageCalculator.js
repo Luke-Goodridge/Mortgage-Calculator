@@ -11,11 +11,17 @@ const mortgageCalculator = (props) => {
             <div className="dropdown-container">
                 <h2>Interest rate (%)</h2>
                 {/* Drop down component, this populates from the interestArray in the state */}
-                {Dropdown(props.currentInterest,props.interestArray,props.interestDropdownHandler)}
+                {Dropdown(
+                    props.currentInterest,
+                    props.interestArray,
+                    props.interestDropdownHandler)}
             </div>
             <div className="dropdown-container">
                 <h2>Term length (years)</h2>
-                {Dropdown(props.termLength,props.termLengthArray,props.termDropdownHandler)}
+                {Dropdown(
+                    props.termLength,
+                    props.termLengthArray,
+                    props.termDropdownHandler)}
             </div>
             <div>
                 <h2>Deposit (£)</h2>
