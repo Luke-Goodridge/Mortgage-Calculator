@@ -75,7 +75,7 @@ h2 {
 /* Small screens */
 @media only screen and (max-width: 600px) {
   .MortgageCalc {
-    margin: 2vh ;
+    margin: 2vh;
     font-size: small;
   }
 }
