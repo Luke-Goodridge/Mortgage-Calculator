@@ -19,9 +19,8 @@ body {
   text-align: center;
   transition: .4s;
   max-width: 600px;
-  height: 90vh;
-  min-height: 840px;
-  padding: 0;
+  height: auto;
+  padding: 5vh 0;
   -webkit-box-shadow: -1px 4px 22px -5px rgba(0,0,0,0.75);
   -moz-box-shadow: -1px 4px 22px -5px rgba(0,0,0,0.75);
   box-shadow: -1px 4px 22px -5px rgba(0,0,0,0.75);
@@ -74,9 +73,9 @@ h2 {
 /* Responsiveness */
 
 /* Small screens */
-@media only screen and (max-width: 800px) {
+@media only screen and (max-width: 600px) {
   .MortgageCalc {
-    margin: 4vh;
+    margin: 2vh ;
     font-size: small;
   }
 }
