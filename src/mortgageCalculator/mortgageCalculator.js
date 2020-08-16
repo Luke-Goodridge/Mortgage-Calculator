@@ -4,6 +4,15 @@ import Dropdown from '../dropdown/dropdown';
 const depositText = "Please enter a deposit value";
 const houseText = "Please enter a house value";
 
+const checkLocalStorage = (key) => {
+    if(localStorage.getItem(key) === ""){
+        return null;
+    } else return localStorage.getItem(key);
+}
+
+export const storedDeposit = checkLocalStorage("deposit");
+export const storedHousePrice = checkLocalStorage("housePrice");
+
 const mortgageCalculator = (props) => {
     //we listen if the user enters "enter" it will calculate the result
     //rather than make them press the button every time
@@ -39,6 +48,7 @@ const mortgageCalculator = (props) => {
                 onBlur={initPlaceholder}
                 placeholder={depositText}
                 onKeyPress={listenForEnterKey}
+                defaultValue={storedDeposit}
                 ></input>
             </div>
             <div>
@@ -52,6 +62,7 @@ const mortgageCalculator = (props) => {
                 onBlur={initPlaceholder}
                 placeholder={houseText}
                 onKeyPress={listenForEnterKey}
+                defaultValue={storedHousePrice}
                 ></input>
             </div>
             {/* displays the total to the user */}
@@ -75,7 +86,6 @@ const initPlaceholder = (event) => {
     }
     else event.target.placeholder = houseText;
   }
-
 
 
 export default mortgageCalculator;

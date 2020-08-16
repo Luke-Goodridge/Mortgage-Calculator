@@ -2,6 +2,8 @@ import React, { Component } from 'react';
 import './App.css';
 import MortgageCalc from "./mortgageCalculator/mortgageCalculator.js";
 import Currency from "./Utilities/Utilities";
+import {storedDeposit} from './mortgageCalculator/mortgageCalculator.js';
+import {storedHousePrice} from './mortgageCalculator/mortgageCalculator.js';
 
 class App extends Component {
   interestArray = [0.5,1.0,2.0,2.5,3,3.5];
@@ -9,8 +11,8 @@ class App extends Component {
 
   initialState = {
     interestAmount: 2.5,
-    deposit: 0,
-    housePrice: 0,
+    deposit: storedDeposit,
+    housePrice: storedHousePrice,
     termLength: 25,
     monthlyPayment: 0,
   }
@@ -28,11 +30,16 @@ class App extends Component {
       //keeps the input to a length of maxLength
       e.target.value = e.target.value.slice(0,maxLength);
     }
+    this.updateLocalStorage(e.target.name, e.target.value);
     //set the state to the new value entered
     this.setState({
       [e.target.name]: e.target.value,
     })
   };
+
+  updateLocalStorage = (key, value) => {
+    localStorage.setItem(key, value);
+  }
 
   //handles the on change for the select event
   interestDropdownHandler = (event) => {
@@ -47,6 +54,8 @@ class App extends Component {
   }
 
   resetCalculator = (event) => {
+    //clear local storage
+    localStorage.clear();
     //reset the state to the initial state
     this.setState({
       ...this.initialState
@@ -58,10 +67,6 @@ class App extends Component {
    });
    //hide the reset button
    document.querySelector("#resetBtn").classList.add("hidden");
-  }
-
-  clearPlaceholder = (event) => {
-    event.target.placeholder = "";
   }
 
   calculateMonthlyPayment = (mortgageAmount, interest, term) =>
@@ -98,6 +103,7 @@ class App extends Component {
       //format the monthlyPayment into currency
       monthlyPayment = Currency.format(monthlyPayment);
       monthlyPayment += " per month";
+      localStorage.setItem("result",monthlyPayment);
     }
     //show the reset button
     document.querySelector("#resetBtn").classList.remove("hidden");
@@ -106,7 +112,6 @@ class App extends Component {
       monthlyPayment: monthlyPayment,
     })
   };
-  
   render(){
     return (
       <div className="MortgageCalc">
