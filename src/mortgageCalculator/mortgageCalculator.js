@@ -5,6 +5,13 @@ const depositText = "Please enter a deposit value";
 const houseText = "Please enter a house value";
 
 const mortgageCalculator = (props) => {
+    //we listen if the user enters "enter" it will calculate the result
+    //rather than make them press the button every time
+    const listenForEnterKey = (event) => {
+        if(event.key === "Enter"){
+            props.calculateButton();
+        }
+    }
     return (
         <div>
             <h1>Mortgage Calculator</h1>
@@ -31,6 +38,7 @@ const mortgageCalculator = (props) => {
                 onFocus={clearPlaceholder}
                 onBlur={initPlaceholder}
                 placeholder={depositText}
+                onKeyPress={listenForEnterKey}
                 ></input>
             </div>
             <div>
@@ -43,6 +51,7 @@ const mortgageCalculator = (props) => {
                 onFocus={clearPlaceholder}
                 onBlur={initPlaceholder}
                 placeholder={houseText}
+                onKeyPress={listenForEnterKey}
                 ></input>
             </div>
             {/* displays the total to the user */}
@@ -54,7 +63,6 @@ const mortgageCalculator = (props) => {
             </div>
         </div>
     );
-
 }
 
 const clearPlaceholder = (event) => {
@@ -67,5 +75,7 @@ const initPlaceholder = (event) => {
     }
     else event.target.placeholder = houseText;
   }
+
+
 
 export default mortgageCalculator;
