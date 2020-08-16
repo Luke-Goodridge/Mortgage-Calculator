@@ -103,7 +103,6 @@ class App extends Component {
       //format the monthlyPayment into currency
       monthlyPayment = Currency.format(monthlyPayment);
       monthlyPayment += " per month";
-      localStorage.setItem("result",monthlyPayment);
     }
     //show the reset button
     document.querySelector("#resetBtn").classList.remove("hidden");
