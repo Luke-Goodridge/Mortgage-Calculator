@@ -33,6 +33,7 @@ body {
   height: 50px;
   width: 100px;
   cursor: pointer;
+  outline: none;
   font-family: 'Montserrat', sans-serif;
   background-color: #B7D3F2;
 }
@@ -53,6 +54,7 @@ h2 {
   margin: 1rem;
 }
 .Dropdown, input {
+  cursor: pointer;
   text-align: center;
   text-align-last: center;
   width: 100%;
@@ -63,6 +65,10 @@ h2 {
   font-size: 1rem;
   font-family: 'Montserrat', sans-serif;
   background-color: #B7D3F2;
+}
+
+input {
+  cursor: text;
 }
 
 .Dropdown:focus, input:focus {
