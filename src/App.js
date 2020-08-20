@@ -2,8 +2,7 @@ import React, { Component } from 'react';
 import './App.css';
 import MortgageCalc from "./mortgageCalculator/mortgageCalculator.js";
 import Currency from "./Utilities/Utilities";
-import {storedDeposit} from './mortgageCalculator/mortgageCalculator.js';
-import {storedHousePrice} from './mortgageCalculator/mortgageCalculator.js';
+import {storedDeposit, storedHousePrice} from './mortgageCalculator/mortgageCalculator.js';
 
 class App extends Component {
   interestArray = [0.5,1.0,2.0,2.5,3,3.5];
@@ -13,6 +12,13 @@ class App extends Component {
     interestAmount: 2.5,
     deposit: storedDeposit,
     housePrice: storedHousePrice,
+    termLength: 25,
+    monthlyPayment: 0,
+  }
+  resetState = {
+    interestAmount: 2.5,
+    deposit: 0,
+    housePrice: 0,
     termLength: 25,
     monthlyPayment: 0,
   }
@@ -58,7 +64,7 @@ class App extends Component {
     localStorage.clear();
     //reset the state to the initial state
     this.setState({
-      ...this.initialState
+      ...this.resetState
     })
     //reset the inputs
    let inputs = document.querySelectorAll("input");
