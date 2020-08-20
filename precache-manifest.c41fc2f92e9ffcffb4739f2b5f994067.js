@@ -1,10 +1,10 @@
 self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
-    "revision": "714abe52ed32c1cf3dcf56d1a3cfd8da",
+    "revision": "f90f38d509c7c8e68d16c7ffd2010a40",
     "url": "/Mortgage-Calculator/index.html"
   },
   {
-    "revision": "e08ae5ccb967e72fd572",
+    "revision": "f870b45d3c0be9a6ef9a",
     "url": "/Mortgage-Calculator/static/css/main.b13fcf77.chunk.css"
   },
   {
@@ -16,8 +16,8 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/Mortgage-Calculator/static/js/2.7d991348.chunk.js.LICENSE.txt"
   },
   {
-    "revision": "e08ae5ccb967e72fd572",
-    "url": "/Mortgage-Calculator/static/js/main.6ad52d02.chunk.js"
+    "revision": "f870b45d3c0be9a6ef9a",
+    "url": "/Mortgage-Calculator/static/js/main.52cba30d.chunk.js"
   },
   {
     "revision": "03af81a3f48f6d58e369",
