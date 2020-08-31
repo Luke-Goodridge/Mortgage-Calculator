@@ -1,6 +1,6 @@
 # Mortgage calculator app
 
-This is a small personal project that aided me in ditermining how much monthyl payments would be with different sized mortgages.
+This is a small personal project that aided me in ditermining how much monthly payments would be with different sized mortgages.
 
 You can visit the live site here for view: https://luke-goodridge.github.io/Mortgage-Calculator/
 
